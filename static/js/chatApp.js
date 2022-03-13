@@ -10,6 +10,7 @@ send_btn.addEventListener('keyup', function(e) {
 });
 async function send_message() {
     let msg = document.getElementById("msg_inp").value;
+    document.getElementById('msg_inp').value = ''; //clear the text field
     chat_service_running().then(
         resp => {
             if (resp === true) {
