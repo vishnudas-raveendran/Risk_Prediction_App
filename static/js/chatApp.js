@@ -1,6 +1,13 @@
 ROOT_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port
 document.getElementById("send_btn").addEventListener("click", send_message);
 
+let send_btn = document.getElementById('msg_inp');
+send_btn.addEventListener('keyup', function(e) {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        document.getElementById("send_btn").click();
+    }
+});
 async function send_message() {
     let msg = document.getElementById("msg_inp").value;
     chat_service_running().then(
@@ -43,7 +50,7 @@ function add_incoming_msg_to_chat_log(response) {
 
     img_elmt = document.createElement("img");
     msg_img_div.appendChild(img_elmt);
-    img_elmt.setAttribute("src", "https://ptetutorials.com/images/user-profile.png");
+    img_elmt.setAttribute("src", "static/blu.gif");
 
     rcvd_msg_elmt = document.createElement("div");
     outer_div.appendChild(rcvd_msg_elmt)
