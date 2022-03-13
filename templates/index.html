@@ -1,30 +1,102 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS --> 
+    <!-- Bootstrap CSS -->
     <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="{{ url_for('static',filename='css/custom.css') }}" rel="stylesheet">
 
     <title>Risk Prediction</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container-fluid">
-     
-    <div class="row">
-        <div class="d-flex justify-content-center">
-            Risk Predictions
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                <h1>Risk Predictions</h1>
+            </div>
         </div>
-    </div>
+        <div class="row messaging">
+            <div class="col-4">
+                <div class="inbox_msg">
+                    <div class="inbox_people">
+                        <div class="headind_srch">
+                            <div class="msg_suggestions_heading">
+                                <h4>Suggested Messages</h4>
+                            </div>
+                            <!--  Can choose to implement a search on message suggestions
+                <div class="srch_bar">
+                <div class="stylish-input-group">
+                  <input type="text" class="search-bar" placeholder="Search">
+                  <span class="input-group-addon">
+                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                  </span>
+                </div>
+              </div> -->
+                        </div>
+                        <div class="inbox_chat">
+                            <div class="chat_list active_chat">
+                                <div class="chat_people">
+                                    <div class="chat_ib">
+                                        <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 messages">
+                <div class="msg_history">
+                    <div class="incoming_msg">
+                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                        </div>
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <p>Test which is a new approach to have all solutions
+                                </p>
+                                <span class="time_date"> 11:01 AM | June 9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="outgoing_msg">
+                        <div class="sent_msg">
+                            <p>Test which is a new approach to have all solutions
+                            </p>
+                            <span class="time_date"> 11:01 AM | June 9</span>
+                        </div>
+                    </div>
+                    <div class="incoming_msg">
+                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                        </div>
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <p>Test, which is a new approach to have</p>
+                                <span class="time_date"> 11:01 AM | Yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="type_msg">
+                    <div class="input_msg_write">
+                        <input type="text" class="write_msg" placeholder="Type a message" />
+                        <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
-    
-    
+
+
     <script src="{{ url_for('static',filename='js/bootstrap.bundle.min.js') }}" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/chatApp.js') }}"></script>
 
-    
-  </body>
+</body>
+
 </html>
