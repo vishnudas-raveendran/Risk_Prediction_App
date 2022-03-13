@@ -95,7 +95,7 @@ E.g.: 127.0.0.1:5000\isalive  or 172.17.0.2:5000\isalive
 |------|-----|---         | --------            |-----            |
 |/isalive | GET |  Checks if the service is available.| |```{"status": "Live"}``` |
 |/predict | POST | Description of task is passed as JSON and the service returns the accident level category from 0 to 4|```{"text":"This is a sample description of task"}```|```{"prediction":3}```|
-| 
+
 
 
 
