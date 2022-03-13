@@ -7,7 +7,7 @@ import pickle
 
 app = Flask(__name__)
 # Load the model
-#ml_model = pickle.load(open('/deploy/models/randomForestModel.pkl','rb'))
+ml_model = pickle.load(open('/deploy/models/randomForestModel.pkl','rb'))
 
 
 
@@ -143,10 +143,9 @@ def predict(data):
     text = text_prepare(data['text'])
     vectorizer = pickle.load(open("/deploy/models/vector.pkl", "rb"))
     desc_vectors = vectorizer.transform([text])
-    #prediction = ml_model.predict(desc_vectors)
+    prediction = ml_model.predict(desc_vectors)
     # Take the first value of prediction
-    #output = prediction[0]
-    output = 1
+    output = prediction[0]
     return output
 
 # def predict_from_dl_model(data):
