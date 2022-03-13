@@ -116,6 +116,7 @@ def text_prepare(text):
     text = ' '.join([x for x in normalize_text(tokenize(text))])
     return text
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -138,6 +139,19 @@ def getPrediction():
     response = {"prediction":str(output)}
     return jsonify(response)
 
+def humanize_output(risk_category):
+    if risk_category == 0:
+        return "Don't worry, there is no risk (Category 0)"
+    elif risk_category == 1:
+        return "Don't worry, there is little risk (Category I)"
+    elif risk_category == 2:
+        return "There is a mild risk. (Category II)"
+    elif risk_category == 3:
+        return "There is risk ! (Category III)"
+    elif risk_category == 4:
+        return "Be careful, it is risky !! (Category IV)"
+
+
 def predict(data):
     # Make prediction using model loaded from disk as per the data.
     text = text_prepare(data['text'])
@@ -145,8 +159,9 @@ def predict(data):
     desc_vectors = vectorizer.transform([text])
     prediction = ml_model.predict(desc_vectors)
     # Take the first value of prediction
-    output = prediction[0]
-    return output
+    risk_category = prediction[0]
+    risk_category_str = humanize_output(risk_category)
+    return risk_category_str
 
 # def predict_from_dl_model(data):
 #     # Make prediction using model loaded from disk as per the data.
@@ -173,4 +188,4 @@ if __name__ == '__main__':
     app.run(port=5000,host='0.0.0.0', debug=False)
 
     # if running standalone uncomment below line and comment above line
-    #app.run(port=5000,host='127.0.0.1', debug=False)
+    #app.run(port=5000,host='127.0.0.1', debug=True)
