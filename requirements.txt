@@ -20,7 +20,7 @@ gast==0.5.3
 google-auth==2.6.0
 google-auth-oauthlib==0.4.6
 google-pasta==0.2.0
-grpcio==1.44.0
+grpcio
 h5py==3.6.0
 html5lib==1.0.1
 idna==2.8
@@ -60,14 +60,14 @@ scipy==1.8.0
 six==1.14.0
 sklearn==0.0
 soupsieve==2.3.1
-tensorboard==2.8.0
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.1
-tensorflow==2.8.0
-tensorflow-io-gcs-filesystem==0.24.0
+# tensorboard==2.8.0
+# tensorboard-data-server==0.6.1
+# tensorboard-plugin-wit==1.8.1
+# tensorflow==2.8.0
+# tensorflow-io-gcs-filesystem==0.24.0
 termcolor==1.1.0
 textsearch==0.0.21
-tf-estimator-nightly==2.8.0.dev2021122109
+# tf-estimator-nightly==2.8.0.dev2021122109
 threadpoolctl==3.1.0
 tqdm==4.63.0
 typing-extensions==4.1.1

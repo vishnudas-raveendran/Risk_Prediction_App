@@ -2,10 +2,12 @@
 import numpy as np
 import os
 from flask import Flask, request, jsonify, json
+from flask import render_template
 import pickle
+
 app = Flask(__name__)
 # Load the model
-model = pickle.load(open('models/randomForestModel.pkl','rb'))
+#ml_model = pickle.load(open('/deploy/models/randomForestModel.pkl','rb'))
 
 
 
@@ -21,6 +23,10 @@ from sklearn.preprocessing import LabelEncoder
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
+
+#from tensorflow import keras
+
+#dl_model = keras.models.load_model('models/simple_rnn')
 
 def denoise_text(text):
     # Strip html if any. For ex. removing <html>, <p> tags
@@ -110,6 +116,10 @@ def text_prepare(text):
     text = ' '.join([x for x in normalize_text(tokenize(text))])
     return text
 
+@app.route("/")
+def index():
+    return render_template("index.html")
+
 @app.route('/isalive')
 def isAlive():
     data = {"status":"Live"}
@@ -120,7 +130,7 @@ def isAlive():
     # )
     return jsonify(data)
 
-@app.route('/api',methods=['POST'])
+@app.route('/predict',methods=['POST'])
 def getPrediction():
     # Get the data from the POST request.
     data = request.get_json(force=True)
@@ -130,15 +140,25 @@ def getPrediction():
 
 def predict(data):
     # Make prediction using model loaded from disk as per the data.
-    print(data['text'])
     text = text_prepare(data['text'])
-    vectorizer = pickle.load(open("models/vector.pkl", "rb"))
+    vectorizer = pickle.load(open("/deploy/models/vector.pkl", "rb"))
     desc_vectors = vectorizer.transform([text])
-    prediction = model.predict(desc_vectors)
+    #prediction = ml_model.predict(desc_vectors)
     # Take the first value of prediction
-    output = prediction[0]
+    #output = prediction[0]
+    output = 1
     return output
 
+# def predict_from_dl_model(data):
+#     # Make prediction using model loaded from disk as per the data.
+#     print(data['text'])
+#     text = text_prepare(data['text'])
+#     vectorizer = pickle.load(open("models/vector.pkl", "rb"))
+#     desc_vectors = vectorizer.transform([text])
+#     prediction = dl_model.predict(desc_vectors)
+#     # Take the first value of prediction
+#     output = prediction[0]
+#     return output
 
 def test_predict():
     data={
@@ -150,4 +170,8 @@ def test_predict():
 
 if __name__ == '__main__':
     #test_predict()
-    app.run(port=5000,host='127.0.0.1', debug=True)
+    # if running on docker uncomment below line
+    app.run(port=5000,host='0.0.0.0', debug=False)
+
+    # if running standalone uncomment below line and comment above line
+    #app.run(port=5000,host='127.0.0.1', debug=False)

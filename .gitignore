@@ -1,3 +1,4 @@
 risk_predictor_venv/
 static/
 __pycache__/
+.dockerignore
