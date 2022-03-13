@@ -2,9 +2,9 @@
 
 Predict the risk given a description of the task
 
--------------------------
+
 ## Docker Installation
-------------------------------
+
 
 ### Pre-Requisite
 
@@ -24,9 +24,9 @@ Go to the containing folder and run below command in command line
 
     `docker run -p 5000:5000 -t risk-predictor-app`
 
-------------------------
+
 ## Ubuntu OS
----------------------------
+
 
 ## Pre-Requisite
 
@@ -81,9 +81,9 @@ to use the localhost address 127.0.0.1
 
     `python3 server.py`
 
-----------------
+
 ## APIs Available
--------------------
+
 
 When running docker : use host address: 172.17.0.2:5000
 
