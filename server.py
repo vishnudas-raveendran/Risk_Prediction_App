@@ -5,9 +5,10 @@ from flask import Flask, request, jsonify, json
 from flask import render_template
 import pickle
 
+MODEL_FILE_ROOT = "/deploy/models"
 app = Flask(__name__)
 # Load the model
-ml_model = pickle.load(open('/deploy/models/randomForestModel.pkl','rb'))
+ml_model = pickle.load(open(MODEL_FILE_ROOT+'/randomForestModel.pkl','rb'))
 
 
 
@@ -155,11 +156,12 @@ def humanize_output(risk_category):
 def predict(data):
     # Make prediction using model loaded from disk as per the data.
     text = text_prepare(data['text'])
-    vectorizer = pickle.load(open("/deploy/models/vector.pkl", "rb"))
+    vectorizer = pickle.load(open(MODEL_FILE_ROOT+"/vector.pkl", "rb"))
     desc_vectors = vectorizer.transform([text])
     prediction = ml_model.predict(desc_vectors)
     # Take the first value of prediction
     risk_category = prediction[0]
+    #risk_category =1;
     risk_category_str = humanize_output(risk_category)
     return risk_category_str
 
