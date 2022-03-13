@@ -2,3 +2,4 @@ risk_predictor_venv/
 static/
 __pycache__/
 .dockerignore
+models/simple_rnn/
