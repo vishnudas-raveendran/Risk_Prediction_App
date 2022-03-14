@@ -2,6 +2,10 @@
     padding: 35px 0 50px 0;
 }
 
+.bg {
+    height: 100%;
+}
+
 .container {
     max-width: 1170px;
     margin: auto;
