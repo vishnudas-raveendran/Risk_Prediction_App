@@ -6,6 +6,5 @@ RUN pip install -r requirements.txt
 COPY ./templates /deploy/templates/
 COPY ./static /deploy/static/
 COPY ./server.py /deploy/
-EXPOSE 5000
-CMD ["gunicorn","-w","4","-b","0.0.0.0:5000","server:app"]
+CMD ["gunicorn","-b","0.0.0.0:5000","server:app"]
 #ENTRYPOINT ["python", "server.py"]
