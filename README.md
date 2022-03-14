@@ -1,7 +1,8 @@
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vishnudas-raveendran/Risk_Prediction_App)
+
 # Capstone Project
 
 Predict the risk given a description of the task
-
 
 ## Docker Installation
 
