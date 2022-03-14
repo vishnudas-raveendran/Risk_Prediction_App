@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify, json
 from flask import render_template
 import pickle
 
-MODEL_FILE_ROOT = "deploy/models"
+MODEL_FILE_ROOT = "/deploy/models"
 app = Flask(__name__)
 # Load the model
 ml_model = pickle.load(open(MODEL_FILE_ROOT+'/randomForestModel.pkl','rb'))
@@ -188,7 +188,7 @@ if __name__ == '__main__':
     #test_predict()
     # if running on docker uncomment below line
     port = int(os.environ.get("PORT", 5000))
-    #app.run(port=port,host='0.0.0.0', debug=False)
+    app.run(port=port,host='0.0.0.0', debug=False)
 
     # if running standalone uncomment below line and comment above line
-    app.run(port=5000,host='127.0.0.1', debug=True)
+    #app.run(port=5000,host='127.0.0.1', debug=True)
