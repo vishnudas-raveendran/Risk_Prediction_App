@@ -187,7 +187,7 @@ def test_predict():
 if __name__ == '__main__':
     #test_predict()
     # if running on docker uncomment below line
-    app.run(port=5000,host='0.0.0.0', debug=False)
+    app.run(port=80,host='0.0.0.0', debug=False)
 
     # if running standalone uncomment below line and comment above line
     #app.run(port=5000,host='127.0.0.1', debug=True)
