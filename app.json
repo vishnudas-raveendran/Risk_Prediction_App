@@ -1,5 +1,5 @@
 {
-    "name": "Industrial Risk Assessment Chat-Bot",
+    "name": "Risk Assess Chat-Bot",
     "description": "Chat-Bot gives potential risk category associated with a description",
     "repository": "https://github.com/vishnudas-raveendran/Risk_Prediction_App",
     "stack": "container"
