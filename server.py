@@ -4,8 +4,11 @@ import os
 from flask import Flask, request, jsonify, json
 from flask import render_template
 import pickle
+import dl_predict
+import customResponse
 
-MODEL_FILE_ROOT = "/deploy/models"
+MODEL_FILE_ROOT = "deploy/models"
+
 app = Flask(__name__)
 # Load the model
 ml_model = pickle.load(open(MODEL_FILE_ROOT+'/randomForestModel.pkl','rb'))
@@ -25,9 +28,9 @@ import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
 
-#from tensorflow import keras
+from tensorflow import keras
 
-#dl_model = keras.models.load_model('models/simple_rnn')
+dl_model = keras.models.load_model(MODEL_FILE_ROOT+'/simple_rnn')
 
 def denoise_text(text):
     # Strip html if any. For ex. removing <html>, <p> tags
@@ -135,22 +138,27 @@ def isAlive():
 @app.route('/predict',methods=['POST'])
 def getPrediction():
     # Get the data from the POST request.
-    data = request.get_json(force=True)
-    output = predict(data)
+    data = request.get_json(force=True) 
+    output = customResponse.ask_bot(data['text'])
+    if output == "others":
+        output = predict(data) #predict from ML model
+    #output = predict_from_dl_model(data)
+    #text = text_prepare(data['text'])
+    #output = dl_predict.predict_with_dl_model(text)
     response = {"prediction":str(output)}
     return jsonify(response)
 
 def humanize_output(risk_category):
     if risk_category == 0:
-        return "Don't worry, there is no risk (Category 0)"
+        return "Don't worry, there is no risk (Category I)"
     elif risk_category == 1:
-        return "Don't worry, there is little risk (Category I)"
+        return "Don't worry, there is little risk (Category II)"
     elif risk_category == 2:
-        return "There is a mild risk. (Category II)"
+        return "There is a mild risk. (Category III)"
     elif risk_category == 3:
-        return "There is risk ! (Category III)"
+        return "There is risk ! (Category IV)"
     elif risk_category == 4:
-        return "Be careful, it is risky !! (Category IV)"
+        return "Be careful, it is risky !! (Category V)"
 
 
 def predict(data):
@@ -165,24 +173,17 @@ def predict(data):
     risk_category_str = humanize_output(risk_category)
     return risk_category_str
 
-# def predict_from_dl_model(data):
-#     # Make prediction using model loaded from disk as per the data.
-#     print(data['text'])
-#     text = text_prepare(data['text'])
-#     vectorizer = pickle.load(open("models/vector.pkl", "rb"))
-#     desc_vectors = vectorizer.transform([text])
-#     prediction = dl_model.predict(desc_vectors)
-#     # Take the first value of prediction
-#     output = prediction[0]
-#     return output
-
-def test_predict():
-    data={
-        "parameters":["Pregnancies", "Glucose","BloodPressure","SkinThickness","Insulin","BMI","DiabetesPedigreeFunction","Age"],
-        "values":[1,85,66,29,0,26.6,0.351,31]
-    }
-    output = predict(data)
-    print(str(output))
+def predict_from_dl_model(data):
+    # Make prediction using model loaded from disk as per the data.
+    #print(data['text'])
+    text = text_prepare(data['text'])
+    vectorizer = pickle.load(open(MODEL_FILE_ROOT+"/vector.pkl", "rb"))
+    desc_vectors = vectorizer.transform([text])
+    prediction = dl_model.predict(desc_vectors)
+    # Take the first value of prediction
+    risk_category = prediction[0]
+    risk_category_str = humanize_output(risk_category)
+    return risk_category_str
 
 if __name__ == '__main__':
     #test_predict()
