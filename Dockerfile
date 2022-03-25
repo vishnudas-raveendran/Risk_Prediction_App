@@ -6,5 +6,7 @@ RUN pip install -r requirements.txt
 COPY ./templates /deploy/templates/
 COPY ./static /deploy/static/
 COPY ./server.py /deploy/
+COPY ./dl_predict.py /deploy/
+COPY ./customResponse.py /deploy/
 CMD ["gunicorn","-b","0.0.0.0:5000","server:app"]
 #ENTRYPOINT ["python", "server.py"]

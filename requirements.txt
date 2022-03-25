@@ -63,14 +63,14 @@ scipy==1.8.0
 six==1.14.0
 sklearn==0.0
 soupsieve==2.3.1
-# tensorboard==2.8.0
-# tensorboard-data-server==0.6.1
-# tensorboard-plugin-wit==1.8.1
-# tensorflow==2.8.0
-# tensorflow-io-gcs-filesystem==0.24.0
+tensorboard==2.8.0
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
+tensorflow==2.8.0
+tensorflow-io-gcs-filesystem==0.24.0
 termcolor==1.1.0
 textsearch==0.0.21
-#tf-estimator-nightly==2.8.0.dev2021122109
+tf-estimator-nightly==2.8.0.dev2021122109
 threadpoolctl==3.1.0
 tqdm==4.63.0
 typing-extensions==4.1.1
