@@ -7,7 +7,7 @@ import pickle
 import dl_predict
 import customResponse
 
-MODEL_FILE_ROOT = "deploy/models"
+MODEL_FILE_ROOT = "/deploy/models"
 
 app = Flask(__name__)
 # Load the model

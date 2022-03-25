@@ -3,7 +3,7 @@ import pickle
 from keras.preprocessing.sequence import pad_sequences
 from tensorflow import keras
 
-MODEL_FILE_ROOT = "deploy/models"
+MODEL_FILE_ROOT = "/deploy/models"
 
 
 #model = keras.models.load_model(MODEL_FILE_ROOT+'/gru')

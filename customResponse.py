@@ -17,7 +17,7 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 
-MODEL_FILE_ROOT = "deploy/models"
+MODEL_FILE_ROOT = "/deploy/models"
 
 def load_model(modelFileName):
   pkl = open(MODEL_FILE_ROOT+'/'+modelFileName, 'rb')
