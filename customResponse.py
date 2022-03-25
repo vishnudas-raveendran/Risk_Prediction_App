@@ -15,6 +15,7 @@ import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 MODEL_FILE_ROOT = "deploy/models"
 
@@ -161,6 +162,10 @@ def ask_bot(text):
   response = get_response_for_tag(tag)
   return response
 
-if __name__ == '__main__':
-    ask_bot("Hi, How are you?")
+if __name__ == "__main__":
+    print("Testing sample!!")
+    response = ask_bot("Hi, How are you?")
+    print("User : Hi, How are you?")
+    print("Bot: "+str(response))
+
 
