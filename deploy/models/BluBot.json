@@ -1,0 +1,74 @@
+{
+	"intents": [{
+			"tag": "Intro",
+			"patterns": ["hi",
+				"how are you",
+				"is anyone there",
+				"hello",
+				"whats up",
+				"hey",
+				"yo",
+				"listen",
+				"please help me",
+				"i belong to",
+				"i am from",
+				"hey ya",
+				"talking to you for first time"
+			],
+			"responses": ["Hello! how can i help you ?"],
+			"context_set": ""
+		},
+		{
+			"tag": "Exit",
+			"patterns": ["thank you",
+				"thanks",
+				"cya",
+				"see you",
+				"later",
+				"see you later",
+				"goodbye",
+				"i am leaving",
+				"have a Good day",
+				"you helped me",
+				"thanks a lot",
+				"thanks a ton",
+				"you are the best",
+				"great help",
+				"too good"
+			],
+			"responses": ["I hope I was able to assist you, Good Bye"],
+			"context_set": ""
+		},
+
+		{
+			"tag": "Bot",
+			"patterns": ["what is your name",
+				"who are you",
+				"name please",
+				"when are your hours of opertions",
+				"what are your working hours",
+				"hours of operation",
+				"working hours",
+				"hours"
+			],
+			"responses": ["I am your virtual learning assistant"],
+			"context_set": ""
+		},
+
+		{
+			"tag": "Profane",
+			"patterns": ["what the hell",
+				"bloody stupid bot",
+				"do you think you are very smart",
+				"screw you",
+				"i hate you",
+				"you are stupid",
+				"jerk",
+				"you are a joke",
+				"useless piece of shit"
+			],
+			"responses": ["Please use respectful words"],
+			"context_set": ""
+		}
+	]
+}
