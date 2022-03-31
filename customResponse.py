@@ -143,7 +143,7 @@ def get_tag(text):
 def manual_corrections(text):
   if text.lower() == "bye":
     return "Exit", True
-  elif text.lower() == "hi":
+  elif text.lower() == "hi" or text.lower() == "hello":
     return "Intro",True
   else:
     return "",False
